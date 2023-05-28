@@ -4,24 +4,33 @@ import {
 import { Input, Button } from '@rneui/themed';
 import { Feather } from '@expo/vector-icons'; 
 import { styleData } from '../data/styleData';
+import { useState } from 'react';
 
-export default function Footer() {
+export default function Footer( {setMessage} ) {
+
+    const [inputText, setInputText] = useState('');
+    
     return (
         <KeyboardAvoidingView
             behavior='padding'
-            style={{marginTop: 100}}
+            style={styles.footer}
         >
             <View style={styles.container}>
                 <View style={styles.boxMessage}>
                     <Input
                         placeholder='Send a message...'
                         style={styles.input}
-                        
+                        onChangeText={setInputText}
+                        value={inputText}
                     />
                     <Button
                         type='clear'
                         title={<Feather name="send" size={18} color="white" />}
-                        style={{ overflow: 'hidden'}}
+                        onPress={() => {
+                            setMessage(inputText)
+                            setInputText('')
+                        }
+                        }
                     />  
                 </View>
                 <Text style={styles.description}>
@@ -43,43 +52,44 @@ export default function Footer() {
 
 const styles = StyleSheet.create({
     footer: {
-        borderTopWidth: 1,
-        borderTopColor: '#f0dc74'
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0
     },
 
     container: {
-        borderColor: styleData.colors.white,
-        borderTopWidth: 0.6,
-        justifyContent: 'center',
-        paddingLeft: 10,
-        paddingRight: 10,
-        height: 105,
-        gap: 5
-    },
-
-    boxMessage: {
+        height: 120,
+        borderTopWidth: 1,
+        borderTopColor: styleData.colors.white,
+        backgroundColor: styleData.colors.primary,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        gap: 10
+      },
+    
+      boxMessage: {
         flexDirection: 'row',
         alignItems: 'center',
         paddingRight: 50,
-        backgroundColor: styleData.colors.secondary,
-        height: 55,
+        height: 65,
         borderRadius: 10,
-    },
-
-    description: {
+        marginTop: 5,
+        backgroundColor: styleData.colors.secondary,
+      },
+    
+      description: {
         color: styleData.colors.white,
         fontSize: 10,
         textAlign: 'center',
-        paddingLeft: 10,
-        paddingRight: 10
-    },
-
-    descriptionLink: {
-        textDecorationLine: 'underline'
-    },
-
-    input: {
-        width: 10,
-        color: styleData.colors.white
-    }
+        paddingHorizontal: 10
+      },
+    
+      descriptionLink: {
+        textDecorationLine: 'underline',
+      },
+    
+      input: {
+        color: styleData.colors.white,
+      },
 });

@@ -1,21 +1,25 @@
-import {  View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, StatusBar } from 'react-native';
 import { Entypo } from '@expo/vector-icons'; 
 import { Button } from '@rneui/themed';
 
-export default function Header() {
+
+
+export default function Header({message, setMessage}) {
+    
+   
     return (
       <View style={styles.container}>
             <Button 
                 icon={<Entypo name="menu" size={24} color='white' />}
                 type="clear"
-                
             />
             <Text style={styles.title}>
-                New Chat
+                {message === '' ? 'New Chat' : message}
             </Text>
             <Button 
                 icon={<Entypo name="plus" size={24} color='white' />}
                 type="clear"
+                onPress={() => setMessage('')}
             />
       </View>
     );
@@ -26,7 +30,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      marginTop: 55,
+      marginTop: StatusBar.currentHeight,
       height: 50,
       borderBottomColor: 'white',
       borderBottomWidth: 0.6,
