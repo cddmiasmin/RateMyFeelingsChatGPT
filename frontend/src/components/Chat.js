@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { ThemeProvider } from '@rneui/themed';
 import { View, StyleSheet, ActivityIndicator } from 'react-native';
-import { ListItem, Avatar } from '@rneui/themed';
+import { ListItem, Avatar, ThemeProvider } from '@rneui/themed';
 import { styleData } from '../data/styleData';
+import IconChatGPT from './../../assets/icon.png';
+import IconUser from './../../assets/iconUser.jpg';
 
 export default function components({message, history, setHistory}) {
 
     const [answer, setAnswer] = useState('');
-/*
+
     useEffect(() => {
         // chamando o axios
+
+        setHistory([...history, {
+            id: history.lenght,
+            text: message,
+            answer: 'Iasmin'
+        }]);
+
     }, []);
 
+/*
     useEffect(() => {
         // chamado ao axios
     }, [answer]);
@@ -23,7 +32,7 @@ export default function components({message, history, setHistory}) {
                 <Avatar
                     rounded
                     size="medium"
-                    source={{ uri: 'https://static.vecteezy.com/system/resources/previews/021/608/790/original/chatgpt-logo-chat-gpt-icon-on-black-background-free-vector.jpg' }}
+                    source={IconUser}
                 />
                     <ListItem.Content>
                         <ListItem.Title style={styles.text}>{message}</ListItem.Title>
@@ -36,7 +45,7 @@ export default function components({message, history, setHistory}) {
                 <Avatar
                     rounded
                     size="medium"
-                    source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1200px-ChatGPT_logo.svg.png' }}
+                    source={IconChatGPT}
                 />
                     <ListItem.Content>
                         <ListItem.Title style={styles.text}>
