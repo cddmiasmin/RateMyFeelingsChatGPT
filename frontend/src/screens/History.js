@@ -26,7 +26,6 @@ export default function History({ history, setHistory}) {
                         <View style={styles.listContainer}>
                             <ListItem onLongPress={() => handleRemoveItem(item)} containerStyle={styles.listForYou}>
                                 <Avatar
-
                                     containerStyle={styles.avatar}
                                     rounded
                                     source={IconUser}
@@ -83,7 +82,7 @@ const styles = StyleSheet.create({
     },
     
     textWarning: {
-        color: 'white',
+        color: styleData.colors.white,
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 18
@@ -129,7 +128,7 @@ const styles = StyleSheet.create({
     },
 
     avatar: {
-        borderColor: 'white',
-         borderWidth: 1
+        borderColor: styleData.colors.white,
+        borderWidth: 1
     }
 });

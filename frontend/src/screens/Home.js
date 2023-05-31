@@ -8,7 +8,7 @@ import { styleData } from '../data/styleData';
 
 export default function Home({ history, setHistory }) {
 
-  const [message, setMessage] = useState('i');
+  const [message, setMessage] = useState('');
 
   return (
     <View style={styles.container}>

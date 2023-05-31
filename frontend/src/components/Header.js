@@ -7,8 +7,6 @@ import { useNavigation } from '@react-navigation/native';
 export default function Header({message, setMessage}) {
     const navigation = useNavigation();
 
-    console.log(message.length)
-
     return (
       <View style={styles.container}>
             <Button 
@@ -42,12 +40,12 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       marginTop: StatusBar.currentHeight,
       height: 50,
-      borderBottomColor: 'white',
+      borderBottomColor: styleData.colors.white,
       borderBottomWidth: 0.6,
       paddingLeft: 5
     },
     title: {
-        color: 'white',
+        color: styleData.colors.white,
         fontSize: 14,
         fontWeight: 'bold'
     }
