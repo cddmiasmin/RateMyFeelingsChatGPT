@@ -4,27 +4,35 @@ import { ListItem, Avatar } from '@rneui/themed';
 import { styleData } from '../data/styleData';
 import IconChatGPT from './../../assets/icon.png';
 import IconUser from './../../assets/iconUser.jpg';
+import axios from 'axios';
 
 export default function components({message, history, setHistory}) {
 
     const [answer, setAnswer] = useState('');
 
     useEffect(() => {
-        // chamando o axios
-
-        setHistory([...history, {
-            id: history.lenght,
-            text: message,
-            answer: 'Iasmin'
-        }]);
-
+        axios.post('http://localhost:4000/sentimentos', {
+            texto: message
+        })  
+            .then(function(response) {
+                const responseAux = response.data.sentimento; 
+                setAnswer(responseAux.replace(/\n\n/g, ""));
+            });    
     }, []);
 
-/*
+
     useEffect(() => {
-        // chamado ao axios
+
+        if(answer.length !== 0) {
+            setHistory([...history, {
+                id: history.lenght,
+                text: message,
+                answer: answer
+            }]);
+        }
+
     }, [answer]);
-*/
+
     return (
         <View style={styles.container}>
             <ListItem containerStyle={styles.themeForUser}>

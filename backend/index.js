@@ -1,8 +1,8 @@
 require('dotenv').config()
 const express = require('express')
+var cors = require('cors')
 const { Configuration, OpenAIApi } = require ('openai')
 const { OPENAI_API_KEY, PORT } = process.env
-
 
 const configuration = new Configuration({
   apiKey: OPENAI_API_KEY
@@ -12,6 +12,7 @@ const openai = new OpenAIApi(configuration)
 const app = express()
 //aqui aplicamos um middleware
 app.use(express.json())
+app.use(cors())
 
 // const OPENAI_API_KEY = process.env.OPENAI_API_KEY
 // const PORT = process.env.PORT
