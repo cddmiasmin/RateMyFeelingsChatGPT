@@ -33,6 +33,7 @@
   * VSCode
   * React Native
   * Node JS
+  * API - ChatGPT(OpenAi) 
   
 </div>
 
