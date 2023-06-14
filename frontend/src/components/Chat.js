@@ -5,13 +5,14 @@ import { styleData } from '../data/styleData';
 import IconChatGPT from './../../assets/icon.png';
 import IconUser from './../../assets/iconUser.jpg';
 import axios from 'axios';
+import { API_URL } from '../../env';
 
 export default function components({message, history, setHistory}) {
 
     const [answer, setAnswer] = useState('');
 
     useEffect(() => {
-        axios.post('http://localhost:4000/sentimentos', {
+        axios.post(`${API_URL}/sentimentos`, {
             texto: message
         })  
             .then(function(response) {
