@@ -4,8 +4,8 @@ import { ListItem, Avatar } from '@rneui/themed';
 import { styleData } from '../data/styleData';
 import IconChatGPT from './../../assets/icon.png';
 import IconUser from './../../assets/iconUser.jpg';
+import { API_URL } from '@env';
 import axios from 'axios';
-import { API_URL } from '../../env';
 
 export default function components({message, history, setHistory}) {
 
